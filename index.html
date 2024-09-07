@@ -1,405 +1,379 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sphs portfolio</title>
-    <link rel="icon" href="images/favicon-large.png" type="image/x-icon" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins"
-      rel="stylesheet"
-    />
-    <style>
-      /* Add your CSS styles here */
-      body {
-        font-family: "Poppins", Arial, sans-serif;
-      }
-      .navbar {
-        background-color: #333;
-        color: #fff;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        border-radius: 20px;
-        overflow: hidden;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sphs portfolio</title>
+  <link rel="icon" href="images/favicon-large.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  <style>
+    /* Add your CSS styles here */
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .navbar-logo {
+      color: #fff;
+      font-size: 20px;
+      text-decoration: none;
+      padding-left: 15px;
+    }
+
+    .navbar-menu {
+      list-style-type: none;
+      margin: 0;
+      padding-right: 15px;
+      display: flex;
+    }
+
+    .navbar-menu li {
+      margin-left: 15px;
+    }
+
+    .navbar-menu li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar-menu li a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      font-size: 3rem;
+    }
+
+    .p2 {
+      margin-top: 3rem;
+      font-size: 2rem;
+    }
+
+    .p3 {
+      margin-top: 0.5%;
+      font-size: 0.8rem;
+    }
+
+    .profile-image-container {
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .profile-text {
+      text-align: center;
+      color: #333;
+      font-size: 24px;
+      margin-top: 3%;
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+
+    .ss {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .imggg {
+      height: 0.8em;
+      transition: transform 0.2s;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      margin-left: 0.8rem;
+    }
+
+    .ss:hover img {
+      /* transform: scale(7.8); */
+      transform: scale(8.5);
+    }
+
+    .p2 .ss:hover img {
+      transform: scale(12);
+    }
+
+    .para {
+      margin-top: 15%;
+    }
+
+    .sticky {
+      position: fixed;
+      /* margin: 1%; */
+      margin-top: 1%;
+      top: 0;
+      width: 98%;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 5%;
+      border-radius: 1rem;
+      width: auto;
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+    }
+
+    footer a {
+      color: rgb(176, 176, 176);
+    }
+
+    p a {
+      color: rgb(34, 130, 106);
+    }
+
+    .lowM {
+      margin-top: 1rem;
+    }
+
+    /* On screens that are 600px or less, set the background color to olive */
+    @media screen and (max-width: 600px) {
       .navbar-logo {
-        color: #fff;
-        font-size: 20px;
-        text-decoration: none;
-        padding-left: 15px;
+        font-size: 12px;
       }
+
       .navbar-menu {
-        list-style-type: none;
-        margin: 0;
-        padding-right: 15px;
-        display: flex;
+        font-size: 10px;
       }
-      .navbar-menu li {
-        margin-left: 15px;
-      }
-      .navbar-menu li a {
-        color: #fff;
-        text-decoration: none;
-      }
-      .navbar-menu li a:hover {
-        text-decoration: underline;
+
+      .para {
+        margin-top: 25%;
       }
 
       p {
-        font-size: 3rem;
+        font-size: 1.25rem;
       }
+
       .p2 {
-        margin-top: 3rem;
-        font-size: 2rem;
-      }
-      .p3 {
-        margin-top: 0.5%;
-        font-size: 0.8rem;
-      }
-
-      .profile-image-container {
-        text-align: center;
-      }
-      .profile-image {
-        width: 100%;
-        border-radius: 20px;
-        object-fit: cover;
-        object-position: center;
-        margin-top: 30px;
-        margin-bottom: 30px;
-      }
-      .profile-text {
-        text-align: center;
-        color: #333;
-        font-size: 24px;
-        margin-top: 3%;
-        margin-left: 20%;
-        margin-right: 20%;
-      }
-
-      .ss {
-        cursor: pointer;
-        text-decoration: underline;
-      }
-      .imggg {
-        height: 0.8em;
-        transition: transform 0.2s;
-        border-radius: 0.5rem;
-        text-decoration: none;
-        margin-left: 0.8rem;
-      }
-
-      .ss:hover img {
-        /* transform: scale(7.8); */
-        transform: scale(8.5);
-      }
-
-      .p2 .ss:hover img {
-        transform: scale(12);
-      }
-      .para {
-        margin-top: 15%;
+        font-size: 1rem;
       }
 
       .sticky {
-        position: fixed;
-        /* margin: 1%; */
-        margin-top: 1%;
-        top: 0;
-        width: 98%;
+        width: 95%;
       }
-      footer {
-        background-color: #333;
-        color: white;
-        padding: 5%;
-        border-radius: 1rem;
-        width: auto;
-        margin-left: 0.3rem;
-        margin-right: 0.3rem;
-      }
-      footer a {
-        color: rgb(176, 176, 176);
-      }
-      p a {
-        color: rgb(34, 130, 106);
-      }
-      .lowM {
-        margin-top: 1rem;
-      }
+    }
+  </style>
+</head>
 
-      /* On screens that are 600px or less, set the background color to olive */
-      @media screen and (max-width: 600px) {
-        .navbar-logo {
-          font-size: 12px;
-        }
-        .navbar-menu {
-          font-size: 10px;
-        }
-        .para {
-          margin-top: 25%;
-        }
-        p {
-          font-size: 1.25rem;
-        }
-        .p2 {
-          font-size: 1rem;
-        }
-        .sticky {
-          width: 95%;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="sticky">
-        <nav class="navbar">
-          <a href="index.html" class="navbar-logo"
-            ><img src="images/favicon-large.png" class="imggg" /> Sanjay phs
-          </a>
-          <ul class="navbar-menu">
-            <!-- <li><a href="#projects">Projects</a></li> -->
-            <li>
-              <a href="Resume_SanjayprasadHS.pdf" target="_blank">Resume</a>
-            </li>
-            <!-- <li><a href="#about">About Me</a></li> -->
-            <li><a href="#contactInfo">Contact</a></li>
-            <!-- <li><a href="#blog">Blog</a></li> -->
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <div class="profile-image-container">
-      <div class="profile-text">
-        <p class="para">
-          Hey everyone! I'm
-          <span class="ss"
-            >Sanjay<img src="images/p1-name.png" class="imggg"
-          /></span>
-          , a Product-person/ designer/ artist / developer from
-          <span class="ss"
-            >India<img src="images/p2-maps.png" class="imggg"
-          /></span>
-          and I build and hack many different
-          <span class="ss"
-            >projects<img src="images/p3-projects.jpg" class="imggg" /></span
-          >. Currently, I'm working on a fintech app. Here's my
-          <span class="ss"
-            >Story!<img src="images/p4-story.jpg" class="imggg"
-          /></span>
-        </p>
-
-        <img
-          src="images/profile-u.jpg"
-          alt="Profile Image"
-          class="profile-image"
-        />
-
-        <p class="p2">
-          When I was younger I spent 3 years in
-          <span class="ss"
-            >Japan<img src="images/p5-Japan.png" class="imggg"
-          /></span>
-          that shaped my
-          <span class="ss"
-            >Curiousity!<img src="images/p6-YIS.jpeg" class="imggg"
-          /></span>
-          Here i had fun exploring new topics with
-
-          <span class="ss"
-            >programming<img src="images/p7-tutle.jpg" class="imggg"
-          /></span>
-          small games being passion, leading me to pursue
-          <span class="ss"
-            >engineering<img src="images/p8-engg.jpg" class="imggg"
-          /></span>
-          .
-        </p>
-
-        <p class="p2">
-          Driven by my love for creating, I delved into building prototypes and
-          products using various
-          <span class="ss"
-            >materials<img src="images/p9-linkage.png" class="imggg"
-          /></span>
-          . From hacking projects to exploring new ideas, I've always sought to
-          merge form and function. Early on, I combined my
-          <span class="ss">
-            artistic sensibilities
-            <img src="images/p10-workarea.jpg" class="imggg" />
-          </span>
-          with my technical skills to bring concepts to
-          <span class="ss">life<img src="images/p11.jpg" class="imggg" /></span>
-          . This fusion of creativity and engineering fuels my passion for
-          building unique and impactful products.
-          <span class="ss"
-            >(like the wool pen<img
-              src="images/p12-wool.jpg"
-              class="imggg" /></span
-          >).
-        </p>
-
-        <p class="p2">
-          I then progressed to building RC controlled planes, gliders, boats,
-          and other
-          <span class="ss">
-            projects
-            <img src="images/p13-rcplane.jpg" class="imggg" /> </span
-          >. With the introduction of
-          <span class="ss">
-            Arduino and Raspberry Pis
-            <img src="images/p14-arduino.jpg" class="imggg" /> </span
-          >, I further delved into robotics and even showcased one of my robots
-          at a
-          <span class="ss">
-            Maker Faire
-            <img src="images/p15-makerfaire.jpg" class="imggg" /> </span
-          >. That inturn got me an Internship to build a bigger
-          <span class="ss">
-            security robot
-            <img src="images/p16-secrobot.webp" class="imggg" />
-          </span>
-          !
-        </p>
-
-        <p class="p2">
-          Taking the saved money from the internship , I ventured into
-          entrepreneurship, to retrofit old cars
-          <span class="ss">
-            to electric
-            <img src="images/p17-omni.jpg" class="imggg" />
-          </span>
-          . This was my first attempt at a startup. Additionally, I delved into
-          the challenge of building my own
-          <span class="ss">
-            axial flux permanent magnet BLDC motor
-            <img src="images/p18-axial.png" class="imggg" />
-          </span>
-          to gain IP
-          <a href="AxialTechnicalDoc.pdf" target="_blank">(some docs)</a>
-        </p>
-
-        <p class="p2">
-          Despite my enthusiasm and efforts, the initial startup didn't quite go
-          as planned..This experience led me to become a
-          <span class="ss">
-            Python developer <img src="images/p19-python.png" class="imggg" />
-          </span>
-          at another startup building cool software products, after which I then
-          joined
-          <span class="ss">
-            Deloitte.
-            <img src="images/p20-deloitte.png" class="imggg" />
-          </span>
-        </p>
-
-        <p class="p2">
-          Realizing I need more time to experiment, I jumped into an MBA program
-          <span class="ss">
-            (at MICA)
-            <img src="images/p21-mica.jpg" class="imggg" />
-          </span>
-          and released my first
-          <span class="ss">
-            full app
-            <img src="images/p22-appscreen.png" class="imggg" />
-          </span>
-          to production !
-          <a
-            href="https://play.google.com/store/apps/details?id=com.edxperimental.Fruitsopedia&hl=en-IN"
-            target="_blank"
-          >
-            (on the playstore)
-          </a>
-          . After this I got lost in the world of
-          <span class="ss">
-            web3 <img src="images/p23-minerpetsdao.png" class="imggg" />
-          </span>
-          ! Participating in multiple hackathons with a friend gave me the
-          confidence to launch my own apps. We made stuff ranging from
-          <span class="ss">
-            games
-            <img src="images/p24-defiexploreres.png" class="imggg" /> </span
-          >, to
-          <span class="ss">
-            NFts
-            <img src="images/p25-blockLearners.png" class="imggg" /> </span
-          >, to
-          <span class="ss">
-            edtech X smart contract appX DAOs .
-            <img src="images/p26-technologydao.png" class="imggg" />
-          </span>
-        </p>
-
-        <p class="p2">
-          Getting back from the highs of 2021 , i tried my second attempt at an
-          edtech startup i made to help Bschool teachers with their workflows
-          using AI
-          <span class="ss">
-            (collabdocs)
-            <img src="images/p27-collabdocs.png" class="imggg" /> </span
-          >. But relaizing that it might not work well , i pivoted to try and
-          make app for financial Edtech. To finally building my Current Social
-
-          <span class="ss">
-            fintech app
-            <img src="images/p28-newfintech.png" class="imggg" /> </span
-          >!
-        </p>
-
-        <p class="p2">
-          Other than building and hacking products i thoroughly enjoy going on
-          very long walks and reading loads of Manga
-          <span class="ss">
-            Manga
-            <img src="images/p29-manga.png" class="imggg" /> </span
-          >. I also tend to spend a lot of time exploring weird corners of the
-          Internet! Also binge loads of
-          <span class="ss">
-            twitter/ Xs.
-            <img src="images/p30-twitter.png" class="imggg" /> </span
-          >!
-        </p>
-
-        <img
-          src="images/longwalk.jpeg"
-          alt="Profile Image"
-          class="profile-image"
-        />
-      </div>
-      <footer>
-        <p class="p2 lowM">Contact me:</p>
-        <p class="p3">
-          Author: Sanjayprasad H S <br />
-          <a href="mailto:sanjayprasadhs@gmail.com">sanjayprasadhs@gmail.com</a>
-        </p>
-        <p class="p3">
-          Personal Email: for un-official stuff<br />
-          <a href="mailto:sanjuhs123@gmail.com">sanjuhs123@gmail.com</a>
-        </p>
-        <p class="p3" id="contactInfo">
-          <!-- <br /> -->
-          <a
-            href="https://www.linkedin.com/in/sanjayprasad-h-s-921a54ba/"
-            target="_blank"
-            >Linkedin</a
-          >&nbsp;
-          <a
-            href="https://www.youtube.com/channel/UC9wDRyp35j8DGnG4SRl-C-Q"
-            target="_blank"
-            >Youtube</a
-          >&nbsp;
-          <a href="https://www.instagram.com/sanjuhs/" target="_blank"
-            >Instagram</a
-          >&nbsp;
-          <a href="https://twitter.com/aNoobonaJourney" target="_blank"
-            >Twitter / X</a
-          >&nbsp;
-        </p>
-      </footer>
+<body>
+  <header>
+    <div class="sticky">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-logo"><img src="images/favicon-large.png" class="imggg" /> Sanjay phs
+        </a>
+        <ul class="navbar-menu">
+          <!-- <li><a href="#projects">Projects</a></li> -->
+          <li>
+            <a href="projectssanjayprasadhs.com" target="_blank">Projects</a>
+          </li>
+          <li>
+            <a href="Resume_SanjayprasadHS.pdf" target="_blank">Resume</a>
+          </li>
+          <!-- <li><a href="#about">About Me</a></li> -->
+          <li><a href="#contactInfo">Contact</a></li>
+          <!-- <li><a href="#blog">Blog</a></li> -->
+        </ul>
+      </nav>
     </div>
-  </body>
+  </header>
+
+  <div class="profile-image-container">
+    <div class="profile-text">
+      <p class="para">
+        Hey everyone! I'm
+        <span class="ss">Sanjay<img src="images/p1-name.png" class="imggg" /></span>
+        , a Product-person/ designer/ artist / developer from
+        <span class="ss">India<img src="images/p2-maps.png" class="imggg" /></span>
+        and I build and hack many different
+        <span class="ss">projects<img src="images/p3-projects.jpg" class="imggg" /></span>. Currently, I'm working on a
+        fintech app. Here's my
+        <span class="ss">Story!<img src="images/p4-story.jpg" class="imggg" /></span>
+      </p>
+
+      <img src="images/profile-u.jpg" alt="Profile Image" class="profile-image" />
+
+      <p class="p2">
+        When I was younger I spent 3 years in
+        <span class="ss">Japan<img src="images/p5-Japan.png" class="imggg" /></span>
+        that shaped my
+        <span class="ss">Curiousity!<img src="images/p6-YIS.jpeg" class="imggg" /></span>
+        Here i had fun exploring new topics with
+
+        <span class="ss">programming<img src="images/p7-tutle.jpg" class="imggg" /></span>
+        small games being passion, leading me to pursue
+        <span class="ss">engineering<img src="images/p8-engg.jpg" class="imggg" /></span>
+        .
+      </p>
+
+      <p class="p2">
+        Driven by my love for creating, I delved into building prototypes and
+        products using various
+        <span class="ss">materials<img src="images/p9-linkage.png" class="imggg" /></span>
+        . From hacking projects to exploring new ideas, I've always sought to
+        merge form and function. Early on, I combined my
+        <span class="ss">
+          artistic sensibilities
+          <img src="images/p10-workarea.jpg" class="imggg" />
+        </span>
+        with my technical skills to bring concepts to
+        <span class="ss">life<img src="images/p11.jpg" class="imggg" /></span>
+        . This fusion of creativity and engineering fuels my passion for
+        building unique and impactful products.
+        <span class="ss">(like the wool pen<img src="images/p12-wool.jpg" class="imggg" /></span>).
+      </p>
+
+      <p class="p2">
+        I then progressed to building RC controlled planes, gliders, boats,
+        and other
+        <span class="ss">
+          projects
+          <img src="images/p13-rcplane.jpg" class="imggg" /> </span>. With the introduction of
+        <span class="ss">
+          Arduino and Raspberry Pis
+          <img src="images/p14-arduino.jpg" class="imggg" /> </span>, I further delved into robotics and even showcased
+        one of my robots
+        at a
+        <span class="ss">
+          Maker Faire
+          <img src="images/p15-makerfaire.jpg" class="imggg" /> </span>. That inturn got me an Internship to build a
+        bigger
+        <span class="ss">
+          security robot
+          <img src="images/p16-secrobot.webp" class="imggg" />
+        </span>
+        !
+      </p>
+
+      <p class="p2">
+        Taking the saved money from the internship , I ventured into
+        entrepreneurship, to retrofit old cars
+        <span class="ss">
+          to electric
+          <img src="images/p17-omni.jpg" class="imggg" />
+        </span>
+        . This was my first attempt at a startup. Additionally, I delved into
+        the challenge of building my own
+        <span class="ss">
+          axial flux permanent magnet BLDC motor
+          <img src="images/p18-axial.png" class="imggg" />
+        </span>
+        to gain IP
+        <a href="AxialTechnicalDoc.pdf" target="_blank">(some docs)</a>
+      </p>
+
+      <p class="p2">
+        Despite my enthusiasm and efforts, the initial startup didn't quite go
+        as planned..This experience led me to become a
+        <span class="ss">
+          Python developer <img src="images/p19-python.png" class="imggg" />
+        </span>
+        at another startup building cool software products, after which I then
+        joined
+        <span class="ss">
+          Deloitte.
+          <img src="images/p20-deloitte.png" class="imggg" />
+        </span>
+      </p>
+
+      <p class="p2">
+        Realizing I need more time to experiment, I jumped into an MBA program
+        <span class="ss">
+          (at MICA)
+          <img src="images/p21-mica.jpg" class="imggg" />
+        </span>
+        and released my first
+        <span class="ss">
+          full app
+          <img src="images/p22-appscreen.png" class="imggg" />
+        </span>
+        to production !
+        <a href="https://play.google.com/store/apps/details?id=com.edxperimental.Fruitsopedia&hl=en-IN" target="_blank">
+          (on the playstore)
+        </a>
+        . After this I got lost in the world of
+        <span class="ss">
+          web3 <img src="images/p23-minerpetsdao.png" class="imggg" />
+        </span>
+        ! Participating in multiple hackathons with a friend gave me the
+        confidence to launch my own apps. We made stuff ranging from
+        <span class="ss">
+          games
+          <img src="images/p24-defiexploreres.png" class="imggg" /> </span>, to
+        <span class="ss">
+          NFts
+          <img src="images/p25-blockLearners.png" class="imggg" /> </span>, to
+        <span class="ss">
+          edtech X smart contract appX DAOs .
+          <img src="images/p26-technologydao.png" class="imggg" />
+        </span>
+      </p>
+
+      <p class="p2">
+        Getting back from the highs of 2021 , i tried my second attempt at an
+        edtech startup i made to help Bschool teachers with their workflows
+        using AI
+        <span class="ss">
+          (collabdocs)
+          <img src="images/p27-collabdocs.png" class="imggg" /> </span>. But relaizing that it might not work well , i
+        pivoted to try and
+        make app for financial Edtech. To finally building my Current Social
+
+        <span class="ss">
+          fintech app
+          <img src="images/p28-newfintech.png" class="imggg" /> </span>!
+      </p>
+
+      <p class="p2">
+        Other than building and hacking products i thoroughly enjoy going on
+        very long walks and reading loads of Manga
+        <span class="ss">
+          Manga
+          <img src="images/p29-manga.png" class="imggg" /> </span>. I also tend to spend a lot of time exploring weird
+        corners of the
+        Internet! Also binge loads of
+        <span class="ss">
+          twitter/ Xs.
+          <img src="images/p30-twitter.png" class="imggg" /> </span>!
+      </p>
+
+      <img src="images/longwalk.jpeg" alt="Profile Image" class="profile-image" />
+    </div>
+    <footer>
+      <p class="p2 lowM">Contact me:</p>
+      <p class="p3">
+        Author: Sanjayprasad H S <br />
+        <a href="mailto:sanjayprasadhs@gmail.com">sanjayprasadhs@gmail.com</a>
+      </p>
+      <p class="p3">
+        Personal Email: for un-official stuff<br />
+        <a href="mailto:sanjuhs123@gmail.com">sanjuhs123@gmail.com</a>
+      </p>
+      <p class="p3" id="contactInfo">
+        <!-- <br /> -->
+        <a href="https://www.linkedin.com/in/sanjayprasad-h-s-921a54ba/" target="_blank">Linkedin</a>&nbsp;
+        <a href="https://www.youtube.com/channel/UC9wDRyp35j8DGnG4SRl-C-Q" target="_blank">Youtube</a>&nbsp;
+        <a href="https://www.instagram.com/sanjuhs/" target="_blank">Instagram</a>&nbsp;
+        <a href="https://twitter.com/aNoobonaJourney" target="_blank">Twitter / X</a>&nbsp;
+      </p>
+    </footer>
+  </div>
+</body>
+
 </html>
