@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanjay's Projects</title>
+    <link rel="icon" href="images/favicon-large.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <style>
+        /* CSS styles copied from index.html */
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .navbar-logo {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+            padding-left: 15px;
+        }
+
+        .navbar-menu {
+            list-style-type: none;
+            margin: 0;
+            padding-right: 15px;
+            display: flex;
+        }
+
+        .navbar-menu li {
+            margin-left: 15px;
+        }
+
+        .navbar-menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar-menu li a:hover {
+            text-decoration: underline;
+        }
+
+        .profile-image-container {
+            text-align: center;
+        }
+
+        .imggg {
+            height: 0.8em;
+            transition: transform 0.2s;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            margin-left: 0.8rem;
+        }
+
+        .sticky {
+            position: fixed;
+            margin-top: 1%;
+            top: 0;
+            width: 98%;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 5%;
+            border-radius: 1rem;
+            width: auto;
+            margin-left: 0.3rem;
+            margin-right: 0.3rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: rgb(176, 176, 176);
+        }
+
+        p a {
+            color: rgb(34, 130, 106);
+        }
+
+
+        .lowM {
+            margin-top: 1rem;
+        }
+
+        /* Project styles */
+        .project-container {
+            padding: 20px;
+            margin-top: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .project-card {
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-card p {
+            margin: 5px 0 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .p2 {
+            margin-top: 3rem;
+            font-size: 2rem;
+        }
+
+        .p3 {
+            margin-top: 0.5%;
+            font-size: 0.8rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            .navbar-logo {
+                font-size: 12px;
+            }
+
+            .navbar-menu {
+                font-size: 10px;
+            }
+
+            .project-container {
+                padding: 10px;
+                margin-top: 60px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .sticky {
+                width: 95%;
+            }
+
+            .desktop-only {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="sticky">
+            <nav class="navbar">
+                <a href="index.html" class="navbar-logo"><img src="images/favicon-large.png" class="imggg" /> Sanjay phs
+                </a>
+                <ul class="navbar-menu">
+                    <li>
+                        <a href="#" class="active">Projects</a>
+                    </li>
+                    <li>
+                        <a href="Resume_SanjayprasadHS.pdf" target="_blank">Resume</a>
+                    </li>
+                    <li class="desktop-only"><a href="#contactInfo">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="project-container">
+        <h1>My Projects and Explorations</h1>
+
+        <div class="section">
+            <h2 class="section-title">Ideas, Experiments and Startups</h2>
+            <ul class="project-list">
+                <li><a href="https://kairos-marketing-priority.vercel.app/" target="_blank">Kairos</a> - My 3rd product
+                    - A productivity monitoring tool</li>
+                <li><a href="https://ffhv1.vercel.app/" target="_blank">Finance for Humans</a> - Fun Fintech app for
+                    humans to bet with each other or sign MOUs with employees and others</li>
+                <li><a href="https://www.creditcardcat.com/" target="_blank">Credit Card Cat</a> - An idea to make
+                    pointsguy for all credit cards around the world</li>
+                <li><a href="https://finance-uiai-upload-frotnend.vercel.app/" target="_blank">Credit Card Cat CMS</a> -
+                    A CMS for Credit Card Cat</li>
+                <li><a href="https://superragv3.vercel.app/" target="_blank">Super RAG</a> - To make a well functioning
+                    RAG Application</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Inactive Ideas</h2>
+            <ul class="project-list">
+                <li><a href="https://lorealp-brandstorm-hacakthon.vercel.app/demo/feed" target="_blank">L'Oreal
+                        Brandstorm</a> - Example social media website for male fashion</li>
+                <li><a href="https://cl-ad-tchat.vercel.app/" target="_blank">Web Chat</a> - A web version of a React
+                    Native webchat I had made long time back to talk to AI bot Aditi</li>
+                <li><a href="https://sparrowsiftui.sanjayprasadhs.com/" target="_blank">Sparrow SwiftUI</a> - For making
+                    a website that can build web artifacts made with older Claude models and NextJS</li>
+                <li><a href="https://ai-rpg-game.vercel.app/" target="_blank">AI RPG Game</a> - An AI-powered RPG game
+                </li>
+                <li>Icon Generator - Currently broken</li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.edxperimental.Fruitsopedia"
+                        target="_blank">FruitPedia</a> - Play Store released app</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Websites Made for Clients</h2>
+            <ul class="project-list">
+                <li><a href="https://edxperimentallabs.com/" target="_blank">EdXperimental Labs</a> - Company Website of
+                    Mine!</li>
+                <li><a href="https://ust-trivandrum-gen-a-iday.vercel.app/" target="_blank">UST AI Event</a> - Website I
+                    had made for UST AI event</li>
+                <li><a href="https://ganesha-ecommv1.vercel.app/" target="_blank">Ganesha E-commerce</a> - Website I
+                    made to test out selling Ganesha Art as NFTs and integrating payment gateways</li>
+                <li><a href="https://itc-test-1.vercel.app/" target="_blank">ITC Vendor Portal</a> - Website I was
+                    testing/making for ITC for their vendors</li>
+                <li><a href="https://nidhi-ventures-website.vercel.app/" target="_blank">Nidhi Ventures</a> - A landing
+                    page I made for a friend</li>
+                <li><a href="https://peritas-sol-security.vercel.app/" target="_blank">Peritas Sol Security</a> -
+                    Landing website for a revamped private limited company in India</li>
+                <li><a href="https://way-faster-hire-me.vercel.app/#pricing" target="_blank">Way Faster Hire Me</a> - A
+                    website I made to experiment with vibe coding</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Writing</h2>
+            <ul class="project-list">
+                <li><a href="https://traffic-lamp-light-novel.vercel.app/" target="_blank">Traffic Lamp
+                        Reincarnation</a> - Light novel I am actively writing</li>
+                <li><a href="https://knataka-semi.vercel.app/" target="_blank">Karnataka Semiconductor</a> - A
+                    book/policy novella for making semiconductors in India</li>
+                <li><a href="https://litm-comic.vercel.app/" target="_blank">Life in a Metro</a> - My personal
+                    self-published comics</li>
+                <li>Fighter JET Novel - Another potential Light novel (TBD)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Poll Analyst Prototype</h2>
+            <ul class="project-list">
+                <li><a href="https://poll-analyst-v2.vercel.app/v2/ai-landing" target="_blank">Poll Analyst</a> -
+                    AI-powered poll analysis tool</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Fun Experience Blogs</h2>
+            <ul class="project-list">
+                <li>Blog on explaining AI GF to my parents</li>
+                <li>NI bot cohosting demo</li>
+                <li>Buying a 30k Omni as my first purchase</li>
+                <li>Neodymium magnets from China</li>
+                <li>Spam posting to Instagram</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 
+    <div class="project-container">
+        <h1>My Projects and Explorations</h1>
+
+        <div class="section">
+            <h2 class="section-title">Ideas, Experiments and Startups</h2>
+
+            <div class="project-card">
+                <a href="https://kairos-marketing-priority.vercel.app/" target="_blank">Kairos</a>
+                <p>My 3rd product - A productivity monitoring tool</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://ffhv1.vercel.app/" target="_blank">Finance for Humans</a>
+                <p>Fun Fintech app for humans to bet with each other or sign MOUs with employees and others</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://www.creditcardcat.com/" target="_blank">Credit Card Cat</a>
+                <p>An idea to make pointsguy for all credit cards around the world</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://finance-uiai-upload-frotnend.vercel.app/" target="_blank">Credit Card Cat CMS</a>
+                <p>A CMS for Credit Card Cat</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://superragv3.vercel.app/" target="_blank">Super RAG</a>
+                <p>To make a well functioning RAG Application</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Inactive Ideas</h2>
+
+            <div class="project-card">
+                <a href="https://lorealp-brandstorm-hacakthon.vercel.app/demo/feed" target="_blank">L'Oreal
+                    Brandstorm</a>
+                <p>Example social media website for male fashion</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://cl-ad-tchat.vercel.app/" target="_blank">Web Chat</a>
+                <p>A web version of a React Native webchat I had made long time back to talk to AI bot Aditi</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://sparrowsiftui.sanjayprasadhs.com/" target="_blank">Sparrow SwiftUI</a>
+                <p>For making a website that can build web artifacts made with older Claude models and NextJS</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://ai-rpg-game.vercel.app/" target="_blank">AI RPG Game</a>
+                <p>An AI-powered RPG game</p>
+            </div>
+
+            <div class="project-card">
+                <p>Icon Generator - Currently broken</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://play.google.com/store/apps/details?id=com.edxperimental.Fruitsopedia"
+                    target="_blank">FruitPedia</a>
+                <p>Play Store released app</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Websites Made for Clients</h2>
+
+            <div class="project-card">
+                <a href="https://edxperimentallabs.com/" target="_blank">EdXperimental Labs</a>
+                <p>Company Website of Mine!</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://ust-trivandrum-gen-a-iday.vercel.app/" target="_blank">UST AI Event</a>
+                <p>Website I had made for UST AI event</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://ganesha-ecommv1.vercel.app/" target="_blank">Ganesha E-commerce</a>
+                <p>Website I made to test out selling Ganesha Art as NFTs and integrating payment gateways</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://itc-test-1.vercel.app/" target="_blank">ITC Vendor Portal</a>
+                <p>Website I was testing/making for ITC for their vendors</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://nidhi-ventures-website.vercel.app/" target="_blank">Nidhi Ventures</a>
+                <p>A landing page I made for a friend</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://peritas-sol-security.vercel.app/" target="_blank">Peritas Sol Security</a>
+                <p>Landing website for a revamped private limited company in India</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://way-faster-hire-me.vercel.app/#pricing" target="_blank">Way Faster Hire Me</a>
+                <p>A website I made to experiment with vibe coding</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Writing</h2>
+
+            <div class="project-card">
+                <a href="https://traffic-lamp-light-novel.vercel.app/" target="_blank">Traffic Lamp Reincarnation</a>
+                <p>Light novel I am actively writing</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://knataka-semi.vercel.app/" target="_blank">Karnataka Semiconductor</a>
+                <p>A book/policy novella for making semiconductors in India</p>
+            </div>
+
+            <div class="project-card">
+                <a href="https://litm-comic.vercel.app/" target="_blank">Life in a Metro</a>
+                <p>My personal self-published comics</p>
+            </div>
+
+            <div class="project-card">
+                <p>Fighter JET Novel - Another potential Light novel (TBD)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Poll Analyst Prototype</h2>
+
+            <div class="project-card">
+                <a href="https://poll-analyst-v2.vercel.app/v2/ai-landing" target="_blank">Poll Analyst</a>
+                <p>AI-powered poll analysis tool</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Fun Experience Blogs</h2>
+
+            <div class="project-card">
+                <p>Blog on explaining AI GF to my parents</p>
+            </div>
+
+            <div class="project-card">
+                <p>NI bot cohosting demo</p>
+            </div>
+
+            <div class="project-card">
+                <p>Buying a 30k Omni as my first purchase</p>
+            </div>
+
+            <div class="project-card">
+                <p>Neodymium magnets from China</p>
+            </div>
+
+            <div class="project-card">
+                <p>Spam posting to Instagram</p>
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+
+    <footer>
+        <p class="p2 lowM">Contact me:</p>
+        <p class="p3">
+            Author: Sanjayprasad H S <br />
+            <a href="mailto:sanjayprasadhs@gmail.com">sanjayprasadhs@gmail.com</a>
+        </p>
+        <p class="p3">
+            Personal Email: for un-official stuff<br />
+            <a href="mailto:sanjuhs123@gmail.com">sanjuhs123@gmail.com</a>
+        </p>
+        <p class="p3" id="contactInfo">
+            <!-- <br /> -->
+            <a href="https://www.linkedin.com/in/sanjayprasad-h-s-921a54ba/" target="_blank">Linkedin</a>&nbsp;
+            <a href="https://www.youtube.com/channel/UC9wDRyp35j8DGnG4SRl-C-Q" target="_blank">Youtube</a>&nbsp;
+            <a href="https://www.instagram.com/sanjuhs/" target="_blank">Instagram</a>&nbsp;
+            <a href="https://twitter.com/aNoobonaJourney" target="_blank">Twitter / X</a>&nbsp;
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+
+Ideas , Experiments and startups: 
+https://kairos-marketing-priority.vercel.app/ - my 3rd product kairos for productiivty monutoring
+https://ffhv1.vercel.app/ - Finance for humans fun Fintech app, for humans to bet with each other or sign MOUs with employees and others
+https://www.creditcardcat.com/ - an idea to make pointsguy for all credit cards around the world
+https://finance-uiai-upload-frotnend.vercel.app/ - A CMS for credit card cat
+https://superragv3.vercel.app/ - To make a well functioning RAG Application
+
+Inactive Ideas:
+https://lorealp-brandstorm-hacakthon.vercel.app/demo/feed - loreal brandstorm exaple social media website for male fashion
+https://cl-ad-tchat.vercel.app/ - a web version of a react antive webchat I had made long time back to talkto ai bot aditi
+https://sparrowsiftui.sanjayprasadhs.com/ - for making a website that cna build web artifcacts made with older calude models and nextjs
+https://ai-rpg-game.vercel.app/ - airpg game
+Icongeneraotr Idea - broken 
+FruitPedia - Play stored released app 
+
+websites made for clients:
+https://edxperimentallabs.com/ - Company Website of Mine !!
+https://ust-trivandrum-gen-a-iday.vercel.app/ - website i had made for UST AI event 
+https://ganesha-ecommv1.vercel.app/ - website i made to test out Selling gamesha Art as NFTS and integrating paymetn gateways into it
+https://itc-test-1.vercel.app/ - website i was tesitng/ making for ITC for their vendors
+https://nidhi-ventures-website.vercel.app/ - a landing page I amde for a friend 
+https://peritas-sol-security.vercel.app/ - landing website for a revamped pvt lts comapny In  India
+https://way-faster-hire-me.vercel.app/#pricing - a website i made to expeirmetn vibe coding haha
+
+Writing:
+https://traffic-lamp-light-novel.vercel.app/ - traffic lamp Reincarantion book I am atively wriitng
+https://knataka-semi.vercel.app/ -  A book / policy novella formaking smeiconductors in India
+https://litm-comic.vercel.app/ - Life in a metro my personal self published comics 
+Fighter JET novel TBD - Another potential Light novel
+
+Poll Analyst Prototype
+https://poll-analyst-v2.vercel.app/v2/ai-landing
+
+fun experience Blogs -
+Blog on expalining AI GF to my parents
+NI bot cohosting demo 
+Buying a 30k omni as my first purchase
+Neodymium magnets from china
+Spam posting to Insta 
