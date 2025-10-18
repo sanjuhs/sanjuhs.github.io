@@ -148,6 +148,28 @@
             font-size: 0.8rem;
         }
 
+        /* Hover video preview */
+        #ffhPreview {
+            position: fixed;
+            right: 16px;
+            top: 100px;
+            width: 360px;
+            max-width: 35vw;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            /* hidden by default */
+        }
+
+        #ffhPreview video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
         @media screen and (max-width: 600px) {
             .navbar-logo {
                 font-size: 12px;
@@ -172,6 +194,11 @@
 
             .desktop-only {
                 display: none;
+            }
+
+            /* Disable hover preview on small screens */
+            #ffhPreview {
+                display: none !important;
             }
         }
     </style>
@@ -205,7 +232,8 @@
             <ul class="project-list">
                 <li><a href="https://kairos-marketing-priority.vercel.app/" target="_blank">Kairos</a> - My 3rd product
                     - A productivity monitoring tool</li>
-                <li><a href="https://ffhv1.vercel.app/" target="_blank">Finance for Humans</a> - Fun Fintech app for
+                <li><a id="ffhLink" href="https://ffhv1.vercel.app/" target="_blank">Finance for Humans</a> - Fun
+                    Fintech app for
                     humans to bet with each other or sign MOUs with employees and others</li>
                 <li><a href="https://www.creditcardcat.com/" target="_blank">Credit Card Cat</a> - An idea to make
                     pointsguy for all credit cards around the world</li>
@@ -284,6 +312,13 @@
                 <li>Spam posting to Instagram</li>
             </ul>
         </div>
+    </div>
+
+    <!-- Hover video preview container (desktop only) -->
+    <div id="ffhPreview" class="desktop-only" aria-hidden="true">
+        <video id="ffhVideo" muted loop playsinline controls preload="metadata">
+            <source src="video/Finance for Humans App Demo.mp4" type="video/mp4" />
+        </video>
     </div>
     <!-- 
     <div class="project-container">
@@ -452,6 +487,62 @@
 
 
 
+
+    <script>
+        (function () {
+            var link = document.getElementById('ffhLink');
+            var preview = document.getElementById('ffhPreview');
+            var video = document.getElementById('ffhVideo');
+
+            if (!link || !preview || !video) return;
+
+            var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+            if (isTouchDevice || window.matchMedia('(max-width: 600px)').matches) {
+                // Disable behavior on touch/mobile
+                return;
+            }
+
+            var show = function () {
+                preview.style.display = 'block';
+                // Try autoplay muted
+                var p = video.play();
+                if (p && typeof p.catch === 'function') {
+                    p.catch(function () { /* ignore */ });
+                }
+            };
+
+            var hide = function () {
+                preview.style.display = 'none';
+                video.pause();
+            };
+
+            var overPreview = false;
+            var overLink = false;
+
+            link.addEventListener('mouseenter', function () {
+                overLink = true;
+                show();
+            });
+            link.addEventListener('mouseleave', function () {
+                overLink = false;
+                setTimeout(function () {
+                    if (!overPreview && !overLink) hide();
+                }, 100);
+            });
+
+            preview.addEventListener('mouseenter', function () {
+                overPreview = true;
+                show();
+            });
+            preview.addEventListener('mouseleave', function () {
+                overPreview = false;
+                setTimeout(function () {
+                    if (!overPreview && !overLink) hide();
+                }, 100);
+            });
+        })();
+    </script>
 
     <footer>
         <p class="p2 lowM">Contact me:</p>
