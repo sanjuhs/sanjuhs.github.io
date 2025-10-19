@@ -168,6 +168,25 @@
             display: block;
             width: 100%;
             height: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        #ffhPreview .close-btn {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            cursor: pointer;
+            line-height: 28px;
+            text-align: center;
+            font-size: 16px;
+            z-index: 2;
         }
 
         @media screen and (max-width: 600px) {
@@ -316,176 +335,11 @@
 
     <!-- Hover video preview container (desktop only) -->
     <div id="ffhPreview" class="desktop-only" aria-hidden="true">
+        <button class="close-btn" type="button" aria-label="Close preview">×</button>
         <video id="ffhVideo" muted loop playsinline controls preload="metadata">
-            <source src="video/Finance for Humans App Demo.mp4" type="video/mp4" />
+            <source src="video/Finance-for-Humans-App-Demo.mp4" type="video/mp4" />
         </video>
     </div>
-    <!-- 
-    <div class="project-container">
-        <h1>My Projects and Explorations</h1>
-
-        <div class="section">
-            <h2 class="section-title">Ideas, Experiments and Startups</h2>
-
-            <div class="project-card">
-                <a href="https://kairos-marketing-priority.vercel.app/" target="_blank">Kairos</a>
-                <p>My 3rd product - A productivity monitoring tool</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://ffhv1.vercel.app/" target="_blank">Finance for Humans</a>
-                <p>Fun Fintech app for humans to bet with each other or sign MOUs with employees and others</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://www.creditcardcat.com/" target="_blank">Credit Card Cat</a>
-                <p>An idea to make pointsguy for all credit cards around the world</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://finance-uiai-upload-frotnend.vercel.app/" target="_blank">Credit Card Cat CMS</a>
-                <p>A CMS for Credit Card Cat</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://superragv3.vercel.app/" target="_blank">Super RAG</a>
-                <p>To make a well functioning RAG Application</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Inactive Ideas</h2>
-
-            <div class="project-card">
-                <a href="https://lorealp-brandstorm-hacakthon.vercel.app/demo/feed" target="_blank">L'Oreal
-                    Brandstorm</a>
-                <p>Example social media website for male fashion</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://cl-ad-tchat.vercel.app/" target="_blank">Web Chat</a>
-                <p>A web version of a React Native webchat I had made long time back to talk to AI bot Aditi</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://sparrowsiftui.sanjayprasadhs.com/" target="_blank">Sparrow SwiftUI</a>
-                <p>For making a website that can build web artifacts made with older Claude models and NextJS</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://ai-rpg-game.vercel.app/" target="_blank">AI RPG Game</a>
-                <p>An AI-powered RPG game</p>
-            </div>
-
-            <div class="project-card">
-                <p>Icon Generator - Currently broken</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://play.google.com/store/apps/details?id=com.edxperimental.Fruitsopedia"
-                    target="_blank">FruitPedia</a>
-                <p>Play Store released app</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Websites Made for Clients</h2>
-
-            <div class="project-card">
-                <a href="https://edxperimentallabs.com/" target="_blank">EdXperimental Labs</a>
-                <p>Company Website of Mine!</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://ust-trivandrum-gen-a-iday.vercel.app/" target="_blank">UST AI Event</a>
-                <p>Website I had made for UST AI event</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://ganesha-ecommv1.vercel.app/" target="_blank">Ganesha E-commerce</a>
-                <p>Website I made to test out selling Ganesha Art as NFTs and integrating payment gateways</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://itc-test-1.vercel.app/" target="_blank">ITC Vendor Portal</a>
-                <p>Website I was testing/making for ITC for their vendors</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://nidhi-ventures-website.vercel.app/" target="_blank">Nidhi Ventures</a>
-                <p>A landing page I made for a friend</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://peritas-sol-security.vercel.app/" target="_blank">Peritas Sol Security</a>
-                <p>Landing website for a revamped private limited company in India</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://way-faster-hire-me.vercel.app/#pricing" target="_blank">Way Faster Hire Me</a>
-                <p>A website I made to experiment with vibe coding</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Writing</h2>
-
-            <div class="project-card">
-                <a href="https://traffic-lamp-light-novel.vercel.app/" target="_blank">Traffic Lamp Reincarnation</a>
-                <p>Light novel I am actively writing</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://knataka-semi.vercel.app/" target="_blank">Karnataka Semiconductor</a>
-                <p>A book/policy novella for making semiconductors in India</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://litm-comic.vercel.app/" target="_blank">Life in a Metro</a>
-                <p>My personal self-published comics</p>
-            </div>
-
-            <div class="project-card">
-                <p>Fighter JET Novel - Another potential Light novel (TBD)</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Poll Analyst Prototype</h2>
-
-            <div class="project-card">
-                <a href="https://poll-analyst-v2.vercel.app/v2/ai-landing" target="_blank">Poll Analyst</a>
-                <p>AI-powered poll analysis tool</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Fun Experience Blogs</h2>
-
-            <div class="project-card">
-                <p>Blog on explaining AI GF to my parents</p>
-            </div>
-
-            <div class="project-card">
-                <p>NI bot cohosting demo</p>
-            </div>
-
-            <div class="project-card">
-                <p>Buying a 30k Omni as my first purchase</p>
-            </div>
-
-            <div class="project-card">
-                <p>Neodymium magnets from China</p>
-            </div>
-
-            <div class="project-card">
-                <p>Spam posting to Instagram</p>
-            </div>
-        </div>
-    </div> -->
-
-
-
 
 
     <script>
@@ -503,6 +357,9 @@
                 return;
             }
 
+            var manualOpen = false;
+            var hideTimeoutId = null;
+
             var show = function () {
                 preview.style.display = 'block';
                 // Try autoplay muted
@@ -515,31 +372,72 @@
             var hide = function () {
                 preview.style.display = 'none';
                 video.pause();
+                manualOpen = false;
+                if (hideTimeoutId) {
+                    clearTimeout(hideTimeoutId);
+                    hideTimeoutId = null;
+                }
             };
 
             var overPreview = false;
             var overLink = false;
+            var scheduleHide = function () {
+                if (manualOpen) return;
+                if (hideTimeoutId) {
+                    clearTimeout(hideTimeoutId);
+                    hideTimeoutId = null;
+                }
+                hideTimeoutId = setTimeout(function () {
+                    if (!overPreview && !overLink && !manualOpen) hide();
+                }, 2500); // 2.5s grace period
+            };
 
             link.addEventListener('mouseenter', function () {
                 overLink = true;
                 show();
+                if (hideTimeoutId) {
+                    clearTimeout(hideTimeoutId);
+                    hideTimeoutId = null;
+                }
             });
             link.addEventListener('mouseleave', function () {
                 overLink = false;
-                setTimeout(function () {
-                    if (!overPreview && !overLink) hide();
-                }, 100);
+                scheduleHide();
             });
 
             preview.addEventListener('mouseenter', function () {
                 overPreview = true;
                 show();
+                if (hideTimeoutId) {
+                    clearTimeout(hideTimeoutId);
+                    hideTimeoutId = null;
+                }
             });
             preview.addEventListener('mouseleave', function () {
                 overPreview = false;
-                setTimeout(function () {
-                    if (!overPreview && !overLink) hide();
-                }, 100);
+                scheduleHide();
+            });
+
+            // Clicking the link also opens and keeps it until closed
+            link.addEventListener('click', function (e) {
+                // If user wants to open the external site, let default behavior continue.
+                // But also keep the preview pinned open.
+                manualOpen = true;
+                show();
+            });
+
+            // Close button and Esc
+            var closeBtn = preview.querySelector('.close-btn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    hide();
+                });
+            }
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    hide();
+                }
             });
         })();
     </script>
