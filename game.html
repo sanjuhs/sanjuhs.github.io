@@ -533,50 +533,6 @@
             border: none;
         }
 
-        .game-embed-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(10,10,15,0.95) 0%, rgba(26,22,37,0.95) 100%);
-            z-index: 10;
-        }
-
-        .play-large-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 2rem 3rem;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
-            color: var(--dark);
-            text-decoration: none;
-            border-radius: 16px;
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(212,169,42,0.4);
-        }
-
-        .play-large-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 50px rgba(212,169,42,0.6);
-        }
-
-        .play-large-btn svg {
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-
-        .embed-note {
-            margin-top: 1.5rem;
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
         .game-controls-hint {
             background: var(--dark);
             padding: 1.5rem 2rem;
@@ -926,25 +882,15 @@
         <div class="game-embed-container">
             <div class="game-embed-header">
                 <h3>Legend of the Necro Knight</h3>
-                <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank" class="fullscreen-btn">🎮 Open on itch.io</a>
+                <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
             </div>
             <div class="game-embed" id="game-container">
-                <!-- itch.io widget embed - handles CORS properly -->
                 <iframe 
                     id="game-iframe"
-                    src="https://itch.io/embed/3360498?linkback=true&amp;bg_color=0a0a0f&amp;fg_color=e8e4dc&amp;link_color=D4A92A&amp;border_color=2d2640" 
-                    width="100%" 
-                    height="167"
-                    frameborder="0"
-                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+                    src="game-builds/Necroknightv2/web/index.html" 
+                    allowfullscreen
+                    scrolling="no"
                 ></iframe>
-                <div class="game-embed-overlay">
-                    <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank" class="play-large-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="80" height="80"><path d="M8 5v14l11-7z"/></svg>
-                        <span>Play on itch.io</span>
-                    </a>
-                    <p class="embed-note">Click above to play the full game in a new tab</p>
-                </div>
             </div>
             <div class="game-controls-hint">
                 <div class="control-item">
@@ -1060,6 +1006,20 @@
             if (e.key === 'Escape') closeLightbox();
         });
 
+
+        // Fullscreen game
+        function toggleFullscreen() {
+            const container = document.getElementById('game-container');
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+            }
+        }
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
