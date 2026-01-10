@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legend of the Necro Knight | A 2D Top-Down Auto-Battler</title>
     <link rel="icon" href="images/favicon-large.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --gold: #D4A92A;
@@ -43,9 +46,11 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--dark);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--gold);
             border-radius: 4px;
@@ -62,12 +67,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(180deg, rgba(5,5,8,0.95) 0%, rgba(5,5,8,0) 100%);
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.95) 0%, rgba(5, 5, 8, 0) 100%);
             transition: background 0.3s ease;
         }
 
         nav.scrolled {
-            background: rgba(5,5,8,0.98);
+            background: rgba(5, 5, 8, 0.98);
             backdrop-filter: blur(10px);
         }
 
@@ -116,10 +121,10 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: 
-                radial-gradient(ellipse at 50% 0%, rgba(212,169,42,0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 20% 80%, rgba(45,38,64,0.5) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 80%, rgba(45,125,63,0.15) 0%, transparent 40%);
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(212, 169, 42, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(45, 38, 64, 0.5) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 80%, rgba(45, 125, 63, 0.15) 0%, transparent 40%);
             z-index: 0;
         }
 
@@ -146,12 +151,15 @@
                 opacity: 0;
                 transform: translateY(100vh) scale(0);
             }
+
             10% {
                 opacity: 0.8;
             }
+
             90% {
                 opacity: 0.8;
             }
+
             100% {
                 opacity: 0;
                 transform: translateY(-100px) scale(1);
@@ -171,7 +179,7 @@
             height: auto;
             margin-bottom: 2rem;
             animation: logo-entrance 1.2s ease-out;
-            filter: drop-shadow(0 0 60px rgba(212,169,42,0.3));
+            filter: drop-shadow(0 0 60px rgba(212, 169, 42, 0.3));
         }
 
         @keyframes logo-entrance {
@@ -179,6 +187,7 @@
                 opacity: 0;
                 transform: scale(0.8) translateY(40px);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
@@ -207,6 +216,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -243,12 +253,12 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
             color: var(--dark);
-            box-shadow: 0 4px 30px rgba(212,169,42,0.4);
+            box-shadow: 0 4px 30px rgba(212, 169, 42, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(212,169,42,0.6);
+            box-shadow: 0 8px 40px rgba(212, 169, 42, 0.6);
         }
 
         .btn-secondary {
@@ -269,7 +279,7 @@
 
         .btn-android:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(74,124,63,0.5);
+            box-shadow: 0 8px 30px rgba(74, 124, 63, 0.5);
         }
 
         .btn svg {
@@ -314,13 +324,29 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
         @keyframes scroll-dot {
-            0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            50% { opacity: 0.3; transform: translateX(-50%) translateY(10px); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
         /* Section Styles */
@@ -396,7 +422,7 @@
         .about-image {
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             border: 2px solid var(--purple-mist);
         }
 
@@ -428,7 +454,7 @@
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
             border: 2px solid transparent;
             transition: all 0.4s ease;
         }
@@ -436,7 +462,7 @@
         .gallery-item:hover {
             transform: translateY(-10px);
             border-color: var(--gold);
-            box-shadow: 0 20px 60px rgba(212,169,42,0.2);
+            box-shadow: 0 20px 60px rgba(212, 169, 42, 0.2);
         }
 
         .gallery-item img {
@@ -452,7 +478,7 @@
         .gallery-item .overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
+            background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             display: flex;
@@ -472,7 +498,7 @@
 
         /* Play Section */
         .play-section {
-            background: 
+            background:
                 radial-gradient(ellipse at center, var(--purple-dark) 0%, var(--darker) 70%);
             padding: 4rem 2rem;
         }
@@ -483,7 +509,7 @@
             background: var(--dark);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 30px 100px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.6);
             border: 3px solid var(--gold);
         }
 
@@ -590,7 +616,7 @@
         .download-card:hover {
             transform: translateY(-10px);
             border-color: var(--gold);
-            box-shadow: 0 20px 60px rgba(212,169,42,0.15);
+            box-shadow: 0 20px 60px rgba(212, 169, 42, 0.15);
         }
 
         .download-card svg {
@@ -658,7 +684,7 @@
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             display: flex;
             align-items: center;
@@ -677,7 +703,7 @@
             max-width: 90%;
             max-height: 90vh;
             border-radius: 8px;
-            box-shadow: 0 20px 80px rgba(212,169,42,0.3);
+            box-shadow: 0 20px 80px rgba(212, 169, 42, 0.3);
         }
 
         .lightbox-close {
@@ -787,6 +813,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav id="navbar">
         <a href="index.html" class="nav-logo">NECRO KNIGHT</a>
@@ -810,11 +837,17 @@
             <p class="hero-subtitle">Command your undead army. Revive fallen foes. Conquer the realm.</p>
             <div class="hero-buttons">
                 <a href="#play" class="btn btn-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
                     Play in Browser
                 </a>
-                <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank" class="btn btn-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6.5v11c0 .5.4 1 1 1h14c.5 0 1-.4 1-1v-11c0-.6-.5-1-1-1H5c-.5 0-1 .5-1 1zm1.5 0h13v9h-13v-9z"/></svg>
+                <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank"
+                    class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M4 6.5v11c0 .5.4 1 1 1h14c.5 0 1-.4 1-1v-11c0-.6-.5-1-1-1H5c-.5 0-1 .5-1 1zm1.5 0h13v9h-13v-9z" />
+                    </svg>
                     View on Itch.io
                 </a>
             </div>
@@ -826,12 +859,15 @@
     <section class="about" id="about">
         <h2 class="section-title">The Legend Begins</h2>
         <p class="section-subtitle">Rise as the Necro Knight and build your army of the fallen</p>
-        
+
         <div class="about-content">
             <div class="about-text">
                 <h3>Command the Undead</h3>
-                <p>In Legend of the Necro Knight, you play as a powerful warrior with the ability to revive fallen enemies and command them as your own. Explore an open world filled with monsters, gnomes, and mythical creatures.</p>
-                <p>Build your army strategically, choose formations, and watch as your forces auto-battle their way through hordes of enemies.</p>
+                <p>In Legend of the Necro Knight, you play as a powerful warrior with the ability to revive fallen
+                    enemies and command them as your own. Explore an open world filled with monsters, gnomes, and
+                    mythical creatures.</p>
+                <p>Build your army strategically, choose formations, and watch as your forces auto-battle their way
+                    through hordes of enemies.</p>
                 <ul class="feature-list">
                     <li>Open World Exploration</li>
                     <li>Revive & Command Fallen Enemies</li>
@@ -851,7 +887,7 @@
     <section class="screenshots" id="screenshots">
         <h2 class="section-title">Screenshots</h2>
         <p class="section-subtitle">Witness the battlefield in all its pixelated glory</p>
-        
+
         <div class="gallery">
             <div class="gallery-item" onclick="openLightbox('images/necro-knight-game/image1.png')">
                 <img src="images/necro-knight-game/image1.png" alt="Gameplay - Battle">
@@ -878,19 +914,15 @@
     <section class="play-section" id="play">
         <h2 class="section-title">Play Now</h2>
         <p class="section-subtitle">No download required - play directly in your browser</p>
-        
+
         <div class="game-embed-container">
             <div class="game-embed-header">
                 <h3>Legend of the Necro Knight</h3>
                 <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
             </div>
             <div class="game-embed" id="game-container">
-                <iframe 
-                    id="game-iframe"
-                    src="game-builds/Necroknightv2/web/index.html" 
-                    allowfullscreen
-                    scrolling="no"
-                ></iframe>
+                <iframe id="game-iframe" src="game-builds/Necroknightv2/web/index.html" allowfullscreen
+                    scrolling="no"></iframe>
             </div>
             <div class="game-controls-hint">
                 <div class="control-item">
@@ -917,27 +949,35 @@
     <section class="download-section" id="download">
         <h2 class="section-title">Download</h2>
         <p class="section-subtitle">Take the adventure with you</p>
-        
+
         <div class="download-cards">
             <div class="download-card">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="var(--green-grass)" viewBox="0 0 24 24">
-                    <path d="M17.523 2c1.39 0 2.477 1.15 2.477 2.468v15.064c0 1.318-1.088 2.468-2.477 2.468H6.477C5.088 22 4 20.85 4 19.532V4.468C4 3.15 5.088 2 6.477 2h11.046zm-4.588 4.035h-1.87v3.49H8.5v1.87h2.565v6.57h1.87v-6.57H15.5v-1.87h-2.565v-3.49z"/>
+                    <path
+                        d="M17.523 2c1.39 0 2.477 1.15 2.477 2.468v15.064c0 1.318-1.088 2.468-2.477 2.468H6.477C5.088 22 4 20.85 4 19.532V4.468C4 3.15 5.088 2 6.477 2h11.046zm-4.588 4.035h-1.87v3.49H8.5v1.87h2.565v6.57h1.87v-6.57H15.5v-1.87h-2.565v-3.49z" />
                 </svg>
                 <h4>Android</h4>
                 <p>Download the APK and play on your mobile device</p>
-                <a href="game-builds/Necroknightv2/android/necro-knight-debug.apk" class="btn btn-android" download>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <a href="game-builds/Necroknightv2/android/necro-knight-debugv0.1.apk" class="btn btn-android" download>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                    </svg>
                     Download APK
                 </a>
             </div>
             <div class="download-card">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="var(--blood-red)" viewBox="0 0 24 24">
-                    <path d="M11.19 2.25c-.26 0-.52.1-.71.29L3.29 9.72a1 1 0 0 0 0 1.41l7.19 7.19c.19.19.45.29.71.29s.52-.1.71-.29l7.19-7.19a1 1 0 0 0 0-1.41L11.9 2.54c-.19-.19-.45-.29-.71-.29zm0 2.83l5.35 5.35-5.35 5.35-5.35-5.35 5.35-5.35z"/>
+                    <path
+                        d="M11.19 2.25c-.26 0-.52.1-.71.29L3.29 9.72a1 1 0 0 0 0 1.41l7.19 7.19c.19.19.45.29.71.29s.52-.1.71-.29l7.19-7.19a1 1 0 0 0 0-1.41L11.9 2.54c-.19-.19-.45-.29-.71-.29zm0 2.83l5.35 5.35-5.35 5.35-5.35-5.35 5.35-5.35z" />
                 </svg>
                 <h4>Itch.io</h4>
                 <p>View the full game page, updates, and community</p>
-                <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank" class="btn btn-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6zm11-3v8h-2V6.413l-7.293 7.294-1.414-1.414L17.585 5H13V3h8z"/></svg>
+                <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank"
+                    class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6zm11-3v8h-2V6.413l-7.293 7.294-1.414-1.414L17.585 5H13V3h8z" />
+                    </svg>
                     Visit Page
                 </a>
             </div>
@@ -1023,7 +1063,7 @@
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1033,5 +1073,5 @@
         });
     </script>
 </body>
-</html>
 
+</html>
