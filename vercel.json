@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/play",
+      "destination": "/game-builds/Necroknightv2/web/",
+      "permanent": false
+    },
+    {
+      "source": "/necro-knight",
+      "destination": "/game-builds/Necroknightv2/web/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/game-builds/(.*)",

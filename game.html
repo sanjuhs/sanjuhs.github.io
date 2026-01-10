@@ -529,23 +529,6 @@
             letter-spacing: 2px;
         }
 
-        .fullscreen-btn {
-            background: var(--gold);
-            color: var(--dark);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .fullscreen-btn:hover {
-            background: var(--gold-bright);
-            transform: scale(1.05);
-        }
-
         .game-embed {
             width: 100%;
             aspect-ratio: 16/9;
@@ -553,10 +536,22 @@
             background: #000;
         }
 
-        .game-embed iframe {
+        .game-launch {
             width: 100%;
             height: 100%;
-            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .game-launch p {
+            max-width: 52ch;
+            color: var(--text-muted);
+            margin: 0;
         }
 
         .game-controls-hint {
@@ -836,7 +831,7 @@
             <p class="hero-tagline">A 2D Top-Down Auto-Battler</p>
             <p class="hero-subtitle">Command your undead army. Revive fallen foes. Conquer the realm.</p>
             <div class="hero-buttons">
-                <a href="#play" class="btn btn-primary">
+                <a href="game-builds/Necroknightv2/web/" class="btn btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                     </svg>
@@ -918,11 +913,16 @@
         <div class="game-embed-container">
             <div class="game-embed-header">
                 <h3>Legend of the Necro Knight</h3>
-                <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+                <a class="btn btn-primary" href="game-builds/Necroknightv2/web/">Launch</a>
             </div>
-            <div class="game-embed" id="game-container">
-                <iframe id="game-iframe" src="game-builds/Necroknightv2/web/index.html" allowfullscreen
-                    scrolling="no"></iframe>
+            <div class="game-embed">
+                <div class="game-launch">
+                    <p>
+                        The browser build needs cross-origin isolation (COOP/COEP), so it runs best as a full page (not
+                        embedded).
+                    </p>
+                    <a class="btn btn-primary" href="game-builds/Necroknightv2/web/">Open the game</a>
+                </div>
             </div>
             <div class="game-controls-hint">
                 <div class="control-item">
@@ -1045,21 +1045,6 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
         });
-
-
-        // Fullscreen game
-        function toggleFullscreen() {
-            const container = document.getElementById('game-container');
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            } else {
-                if (container.requestFullscreen) {
-                    container.requestFullscreen();
-                } else if (container.webkitRequestFullscreen) {
-                    container.webkitRequestFullscreen();
-                }
-            }
-        }
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

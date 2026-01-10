@@ -4,6 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no">
     <title>Necro Knight</title>
+    <script>
+      // If served at ".../web" (no trailing slash), relative asset URLs resolve one directory too high.
+      if (location.pathname.endsWith('/web')) {
+        location.replace(location.pathname + '/' + location.search + location.hash);
+      }
+    </script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
