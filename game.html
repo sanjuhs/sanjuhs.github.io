@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legend of the Necro Knight | A 2D Top-Down Auto-Battler</title>
+    <link rel="icon" href="images/favicon-large.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4A92A;
+            --gold-bright: #FFD54F;
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --purple-dark: #1a1625;
+            --purple-mist: #2d2640;
+            --green-grass: #4a7c3f;
+            --green-dark: #2d4d28;
+            --blood-red: #c44;
+            --text-light: #e8e4dc;
+            --text-muted: #9a9590;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--darker);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(5,5,8,0.95) 0%, rgba(5,5,8,0) 100%);
+            transition: background 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(5,5,8,0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 50% 0%, rgba(212,169,42,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(45,38,64,0.5) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 80%, rgba(45,125,63,0.15) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        /* Animated particles */
+        .particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float-up 8s infinite;
+        }
+
+        @keyframes float-up {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1200px;
+        }
+
+        .hero-logo {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            margin-bottom: 2rem;
+            animation: logo-entrance 1.2s ease-out;
+            filter: drop-shadow(0 0 60px rgba(212,169,42,0.3));
+        }
+
+        @keyframes logo-entrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .hero-tagline {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 6px;
+            margin-bottom: 1rem;
+            animation: fade-in 1s ease-out 0.3s backwards;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            animation: fade-in 1s ease-out 0.5s backwards;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fade-in 1s ease-out 0.7s backwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+            color: var(--dark);
+            box-shadow: 0 4px 30px rgba(212,169,42,0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(212,169,42,0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .btn-android {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-grass) 100%);
+            color: white;
+        }
+
+        .btn-android:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(74,124,63,0.5);
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 30px;
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            margin: 0.5rem auto 0;
+            position: relative;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: scroll-dot 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes scroll-dot {
+            0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 0.3; transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--darker) 0%, var(--purple-dark) 50%, var(--darker) 100%);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .feature-list li::before {
+            content: '⚔';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 2px solid var(--purple-mist);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Screenshots Gallery */
+        .screenshots {
+            background: var(--darker);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(212,169,42,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .caption {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Play Section */
+        .play-section {
+            background: 
+                radial-gradient(ellipse at center, var(--purple-dark) 0%, var(--darker) 70%);
+            padding: 4rem 2rem;
+        }
+
+        .game-embed-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--dark);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.6);
+            border: 3px solid var(--gold);
+        }
+
+        .game-embed-header {
+            background: linear-gradient(90deg, var(--dark) 0%, var(--purple-mist) 50%, var(--dark) 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--purple-mist);
+        }
+
+        .game-embed-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+        }
+
+        .fullscreen-btn {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--gold-bright);
+            transform: scale(1.05);
+        }
+
+        .game-embed {
+            width: 100%;
+            aspect-ratio: 16/9;
+            position: relative;
+            background: #000;
+        }
+
+        .game-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .game-controls-hint {
+            background: var(--dark);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--purple-mist);
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .key {
+            background: var(--purple-mist);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 0.9rem;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+
+        .download-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, var(--purple-dark) 0%, var(--dark) 100%);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--purple-mist);
+            transition: all 0.4s ease;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+        }
+
+        .download-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(212,169,42,0.15);
+        }
+
+        .download-card svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-card h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .download-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--purple-mist);
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-credit {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-credit a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 80px rgba(212,169,42,0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 2rem;
+            color: var(--dark);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .feature-list {
+                text-align: left;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+                letter-spacing: 3px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 0.8rem 1rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 0.8rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+
+            .hero {
+                padding: 1rem;
+            }
+
+            .hero-logo {
+                margin-bottom: 1rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .game-controls-hint {
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">NECRO KNIGHT</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#screenshots">Screenshots</a></li>
+            <li><a href="#play">Play Now</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="projects.html">Back to Portfolio</a></li>
+        </ul>
+    </nav>
+
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="images/necro-knight-game/logo.png" alt="Legend of the Necro Knight" class="hero-logo">
+            <p class="hero-tagline">A 2D Top-Down Auto-Battler</p>
+            <p class="hero-subtitle">Command your undead army. Revive fallen foes. Conquer the realm.</p>
+            <div class="hero-buttons">
+                <a href="#play" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    Play in Browser
+                </a>
+                <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank" class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6.5v11c0 .5.4 1 1 1h14c.5 0 1-.4 1-1v-11c0-.6-.5-1-1-1H5c-.5 0-1 .5-1 1zm1.5 0h13v9h-13v-9z"/></svg>
+                    View on Itch.io
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">Scroll</div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">The Legend Begins</h2>
+        <p class="section-subtitle">Rise as the Necro Knight and build your army of the fallen</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Command the Undead</h3>
+                <p>In Legend of the Necro Knight, you play as a powerful warrior with the ability to revive fallen enemies and command them as your own. Explore an open world filled with monsters, gnomes, and mythical creatures.</p>
+                <p>Build your army strategically, choose formations, and watch as your forces auto-battle their way through hordes of enemies.</p>
+                <ul class="feature-list">
+                    <li>Open World Exploration</li>
+                    <li>Revive & Command Fallen Enemies</li>
+                    <li>Strategic Army Formations</li>
+                    <li>Auto-Battle Combat System</li>
+                    <li>Special Abilities & Power-ups</li>
+                    <li>Pixel Art Aesthetic</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="images/necro-knight-game/image.png" alt="Game Menu">
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots" id="screenshots">
+        <h2 class="section-title">Screenshots</h2>
+        <p class="section-subtitle">Witness the battlefield in all its pixelated glory</p>
+        
+        <div class="gallery">
+            <div class="gallery-item" onclick="openLightbox('images/necro-knight-game/image1.png')">
+                <img src="images/necro-knight-game/image1.png" alt="Gameplay - Battle">
+                <div class="overlay">
+                    <span class="caption">⚔️ Revive fallen gnomes to join your army</span>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/necro-knight-game/image2.png')">
+                <img src="images/necro-knight-game/image2.png" alt="Gameplay - Army">
+                <div class="overlay">
+                    <span class="caption">🛡️ Command your undead formation</span>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/necro-knight-game/image3.png')">
+                <img src="images/necro-knight-game/image3.png" alt="Game Over Screen">
+                <div class="overlay">
+                    <span class="caption">💀 The Necro-Knight has fallen...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Play Section -->
+    <section class="play-section" id="play">
+        <h2 class="section-title">Play Now</h2>
+        <p class="section-subtitle">No download required - play directly in your browser</p>
+        
+        <div class="game-embed-container">
+            <div class="game-embed-header">
+                <h3>Legend of the Necro Knight</h3>
+                <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+            </div>
+            <div class="game-embed" id="game-container">
+                <iframe 
+                    id="game-iframe"
+                    src="game-builds/Necroknightv2/web/index.html" 
+                    allowfullscreen
+                    scrolling="no"
+                ></iframe>
+            </div>
+            <div class="game-controls-hint">
+                <div class="control-item">
+                    <span class="key">W A S D</span>
+                    <span>Move</span>
+                </div>
+                <div class="control-item">
+                    <span class="key">SPACE</span>
+                    <span>Special Attack (x4)</span>
+                </div>
+                <div class="control-item">
+                    <span class="key">E</span>
+                    <span>Interact / Revive</span>
+                </div>
+                <div class="control-item">
+                    <span class="key">ESC</span>
+                    <span>Menu</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section" id="download">
+        <h2 class="section-title">Download</h2>
+        <p class="section-subtitle">Take the adventure with you</p>
+        
+        <div class="download-cards">
+            <div class="download-card">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="var(--green-grass)" viewBox="0 0 24 24">
+                    <path d="M17.523 2c1.39 0 2.477 1.15 2.477 2.468v15.064c0 1.318-1.088 2.468-2.477 2.468H6.477C5.088 22 4 20.85 4 19.532V4.468C4 3.15 5.088 2 6.477 2h11.046zm-4.588 4.035h-1.87v3.49H8.5v1.87h2.565v6.57h1.87v-6.57H15.5v-1.87h-2.565v-3.49z"/>
+                </svg>
+                <h4>Android</h4>
+                <p>Download the APK and play on your mobile device</p>
+                <a href="game-builds/Necroknightv2/android/necro-knight-debug.apk" class="btn btn-android" download>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    Download APK
+                </a>
+            </div>
+            <div class="download-card">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="var(--blood-red)" viewBox="0 0 24 24">
+                    <path d="M11.19 2.25c-.26 0-.52.1-.71.29L3.29 9.72a1 1 0 0 0 0 1.41l7.19 7.19c.19.19.45.29.71.29s.52-.1.71-.29l7.19-7.19a1 1 0 0 0 0-1.41L11.9 2.54c-.19-.19-.45-.29-.71-.29zm0 2.83l5.35 5.35-5.35 5.35-5.35-5.35 5.35-5.35z"/>
+                </svg>
+                <h4>Itch.io</h4>
+                <p>View the full game page, updates, and community</p>
+                <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank" class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6zm11-3v8h-2V6.413l-7.293 7.294-1.414-1.414L17.585 5H13V3h8z"/></svg>
+                    Visit Page
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Legend of the Necro Knight</div>
+        <div class="footer-links">
+            <a href="index.html">Portfolio</a>
+            <a href="projects.html">Projects</a>
+            <a href="https://sanjuhs123.itch.io/legend-of-the-necro-knight" target="_blank">Itch.io</a>
+            <a href="https://github.com/sanjuhs" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-credit">
+            Built with ❤️ by <a href="index.html">Sanjay</a> | Made with LÖVE2D
+        </p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close">&times;</button>
+        <img src="" alt="Screenshot" id="lightbox-img">
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Generate particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (6 + Math.random() * 4) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Lightbox
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close lightbox on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Fullscreen game
+        function toggleFullscreen() {
+            const container = document.getElementById('game-container');
+            const iframe = document.getElementById('game-iframe');
+            
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
