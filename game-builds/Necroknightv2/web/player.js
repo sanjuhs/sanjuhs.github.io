@@ -381,6 +381,12 @@ SOFTWARE.
   var search = url.searchParams;
   var arg = search.get('arg');
   var uri = search.get('g');
+  // Optional cache-buster for deployed updates:
+  // love.js caches packages in IndexedDB keyed by `uri`, so a new build should change the key.
+  // We keep the actual package filename clean (see `pkg` below).
+  var build = search.get('b');
+  if (uri && build)
+    uri = uri + '?b=' + encodeURIComponent(build);
   var ops = {
     compat: search.get('c'),
     version: search.get('v'),
@@ -441,7 +447,7 @@ SOFTWARE.
     Player.fetchPkgs(uri, ops.nocache)
       .then(function (cache) {
         // prepare arguments
-        var pkg = uri.substring(uri.lastIndexOf('/') + 1);
+        var pkg = uri.substring(uri.lastIndexOf('/') + 1).split('?')[0];
         var varg = [pkg];
         if (arg && Array.isArray(arg))
           for (var i = 0; i < arg.length; i++)
